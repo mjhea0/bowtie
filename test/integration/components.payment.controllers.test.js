@@ -8,7 +8,6 @@ const knex = require('../../src/server/db/knex');
 const braintree = require(
   '../../src/server/components/payment/payment.controllers');
 
-// TODO: Test for errors
 describe('components : payment : payment.controllers', function() {
 
   beforeEach(function(done) {
@@ -38,12 +37,27 @@ describe('components : payment : payment.controllers', function() {
   });
 
   describe('createTransaction()', function () {
-    const nonce = 'fake-valid-nonce';
     it('should provide transaction info', function (done) {
-      braintree.createTransaction(nonce, function(err, transactionInfo) {
+      const nonce = 'fake-valid-nonce';
+      braintree.createTransaction(nonce,
+        function(err, transactionInfo) {
         transactionInfo.should.be.a('object');
         transactionInfo.transaction.id.should.be.a('string');
         transactionInfo.success.should.equal(true);
+        done();
+      });
+    });
+    it('should provide NOT transaction info when the nonce is invalid',
+      function (done) {
+      const nonce = 'invalid nonce';
+      braintree.createTransaction(nonce,
+        function(err, transactionInfo) {
+        transactionInfo.should.be.a('object');
+        transactionInfo.params.transaction
+          .paymentMethodNonce.should.eql('invalid nonce');
+        transactionInfo.message.should.eql(
+          'Unknown or expired payment_method_nonce.');
+        transactionInfo.success.should.equal(false);
         done();
       });
     });
@@ -58,6 +72,25 @@ describe('components : payment : payment.controllers', function() {
         userInfo.should.be.a('array');
         userInfo[0].email.should.eql('test@test.com');
         done();
+      });
+    });
+  });
+
+  describe('createUser()', function () {
+    const transactionID = '9999';
+    const userEmail = 'test@test.com';
+    it('should NOT create a user if the email is already in use',
+      function (done) {
+      braintree.createUser(
+        transactionID, userEmail, function(err, userInfo) {
+        userInfo.should.be.a('array');
+        userInfo[0].email.should.eql('test@test.com');
+        braintree.createUser(
+          transactionID, userEmail, function(err, userInfo) {
+          should.exist(err);
+          should.not.exist(userInfo);
+          done();
+        });
       });
     });
   });

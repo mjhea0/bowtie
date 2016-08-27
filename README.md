@@ -26,5 +26,6 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 1. Add Code Coverage and Coveralls
 1. Add more integration tests
 1. Update UI/UX
+1. Add screenshots to Github
 1. Add different mail providers for Nodemailer
 1. Update documentation
