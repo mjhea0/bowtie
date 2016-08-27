@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.12",
     "mocha": "^3.0.2",
     "mocha-jscs": "^5.0.1",
     "mocha-jshint": "^2.3.1"
