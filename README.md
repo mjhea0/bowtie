@@ -18,10 +18,11 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 ## Test
 
 1. Without coverage - `npm test`
-1. With coverahe - `npm run coverage`
+1. With coverage - `npm run coverage`
 
 ## TODO
 
+1. ~~Set up Travis CI~~ (08/27/2016)
 1. Add Code Coverage and Coveralls
 1. Add more integration tests
 1. Update UI/UX
