@@ -1,6 +1,7 @@
 # Bowtie
 
 [![Build Status](https://travis-ci.org/mjhea0/bowtie.svg?branch=master)](https://travis-ci.org/mjhea0/bowtie)
+[![Coverage Status](https://coveralls.io/repos/github/mjhea0/bowtie/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/bowtie?branch=master)
 
 Have a digital product that you want to sell? Bowtie simplifies the process, providing both the client and server-side code. It's powered by JavaScript, Node, Express, Postgres, [Braintree](https://www.braintreepayments.com/) (for payment processing), and [Mailgun](http://www.mailgun.com).
 
@@ -21,8 +22,8 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 ## TODO
 
-1. Add Code Coverage
-1. Add more tests
+1. Add Code Coverage and Coveralls
+1. Add more integration tests
 1. Update UI/UX
 1. Add different mail providers for Nodemailer
 1. Update documentation
