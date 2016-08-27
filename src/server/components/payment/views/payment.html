@@ -1,0 +1,65 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+
+        <!-- loading spinner -->
+        <div class="spinner" id="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+
+        <!-- payment form -->
+        <form id="form">
+          <div class="form-group">
+            <label>
+              <span>Email Address</span>
+              <input type="email" class="form-control email" name="email" value="test@test.com" required>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <span>Card Number</span>
+              <div type="text" class="form-control" id="card-number"></div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <span>Expiration Date</span>
+              <div type="text" class="form-control" id="expiration-date"></div>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <span>Security Code</span>
+              <div type="text" class="form-control" id="cvv"></div>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-default" id="submit-btn" disabled>Submit</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    'use strict';
+    var token = '{{token}}'
+  </script>
+
+{% endblock %}
+
+{% block scripts %}
+  <script type="text/javascript" src="https://js.braintreegateway.com/web/3.0.0/js/client.min.js"></script>
+  <script type="text/javascript" src="https://js.braintreegateway.com/web/3.0.0/js/hosted-fields.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+  <script type="text/javascript" src="/js/payment.js"></script>
+{% endblock %}
