@@ -1,6 +1,6 @@
 # Bowtie
 
-Have a digital product that you want to sell? Bowtie simplifies the process, providing both the client and server-side code, and is powered by JavaScript, Node, Express, Postgres, Braintree, and Mailgun.
+Have a digital product that you want to sell? Bowtie simplifies the process, providing both the client and server-side code. It's powered by JavaScript, Node, Express, Postgres, [Braintree](https://www.braintreepayments.com/), and [Mailgun](http://www.mailgun.com).
 
 ## Getting Started
 
