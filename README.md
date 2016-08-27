@@ -1,5 +1,7 @@
 # Bowtie
 
+[![Build Status](https://travis-ci.org/mjhea0/bowtie.svg?branch=master)](https://travis-ci.org/mjhea0/bowtie)
+
 Have a digital product that you want to sell? Bowtie simplifies the process, providing both the client and server-side code. It's powered by JavaScript, Node, Express, Postgres, [Braintree](https://www.braintreepayments.com/), and [Mailgun](http://www.mailgun.com).
 
 ## Getting Started
@@ -11,3 +13,14 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 1. Create local database - i.e., `createdb bowtie`
 1. Migrate - `knex migrate:latest --env development`
 1. Run the development server - `npm start`
+
+## Test
+
+`npm test`
+
+## TODO
+
+1. Add Code Coverage
+1. Add more tests
+1. Update UI/UX
+1. Add different mail providers for Nodemailer
