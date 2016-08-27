@@ -47,7 +47,7 @@ describe('components : payment : payment.controllers', function() {
         done();
       });
     });
-    it('should provide NOT transaction info when the nonce is invalid',
+    it('should NOT provide transaction info when the nonce is invalid',
       function (done) {
       const nonce = 'invalid nonce';
       braintree.createTransaction(nonce,
@@ -64,9 +64,9 @@ describe('components : payment : payment.controllers', function() {
   });
 
   describe('createUser()', function () {
-    const transactionID = '9999';
-    const userEmail = 'test@test.com';
     it('should create a user', function (done) {
+      const transactionID = '9999';
+      const userEmail = 'test@test.com';
       braintree.createUser(
         transactionID, userEmail, function(err, userInfo) {
         userInfo.should.be.a('array');
@@ -74,17 +74,14 @@ describe('components : payment : payment.controllers', function() {
         done();
       });
     });
-  });
-
-  describe('createUser()', function () {
-    const transactionID = '9999';
-    const userEmail = 'test@test.com';
     it('should NOT create a user if the email is already in use',
       function (done) {
+      const transactionID = '99999';
+      const userEmail = 'testing@testing.com';
       braintree.createUser(
         transactionID, userEmail, function(err, userInfo) {
         userInfo.should.be.a('array');
-        userInfo[0].email.should.eql('test@test.com');
+        userInfo[0].email.should.eql('testing@testing.com');
         braintree.createUser(
           transactionID, userEmail, function(err, userInfo) {
           should.exist(err);
