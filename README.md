@@ -16,7 +16,8 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 ## Test
 
-`npm test`
+1. Without coverage - `npm test`
+1. With coverahe - `npm run coverage`
 
 ## TODO
 
