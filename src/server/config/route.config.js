@@ -1,9 +1,11 @@
 (function (routeConfig) {
 
+  'use strict';
+
   routeConfig.init = function (app) {
 
     // *** routes *** //
-    var routes = require('../components/payment/payment.routes');
+    const routes = require('../components/payment/payment.routes');
 
     // *** register routes *** //
     app.use('/', routes);

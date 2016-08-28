@@ -30,6 +30,7 @@ describe('components : payment : payment.controllers', function() {
   describe('getClientToken()', function () {
     it('should provide a token', function (done) {
       braintree.getClientToken(function(err, token) {
+        should.exist(token);
         token.should.be.a('string');
         done();
       });
@@ -88,6 +89,17 @@ describe('components : payment : payment.controllers', function() {
           should.not.exist(userInfo);
           done();
         });
+      });
+    });
+  });
+
+  describe('checkEmail()', function () {
+    it('should return an empty array', function (done) {
+      const userEmail = 'test@test.com';
+      braintree.checkEmail(userEmail, function(err, user) {
+        user.should.be.a('array');
+        user.length.should.eql(0);
+        done();
       });
     });
   });
