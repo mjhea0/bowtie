@@ -3,11 +3,12 @@
   'use strict';
 
   const express = require('express');
+  const router = express.Router();
 
   const braintree = require('./payment.controllers');
-  let paid = false;
 
-  const router = express.Router();
+  let paid = false;
+  const transactionAmount = process.env.TRANSACTION_AMOUNT;
 
   router.get('/', indexHandler);
   router.post('/checkout', checkoutHandler);
@@ -16,7 +17,7 @@
   function indexHandler(req, res, next) {
     const renderObject = {};
     renderObject.title = 'Bowtie - digital downloads made easy';
-    braintree.getClientToken(function(err, token) {
+    braintree.getClientToken((err, token) => {
       if (err) {
         return next(err);
       }
@@ -37,7 +38,8 @@
         });
       }
       // create braintree transaction
-      braintree.createTransaction(nonce, (err, data) => {
+      braintree.createTransaction(
+        parseFloat(transactionAmount), nonce, (err, data) => {
         if (err) {
           return next(err);
         }

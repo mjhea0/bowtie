@@ -5,7 +5,6 @@
   const nodemailer = require('nodemailer');
   const mg = require('nodemailer-mailgun-transport');
 
-  const transactionAmount = process.env.TRANSACTION_AMOUNT;
   const mailgunKey = process.env.MAILGUN_KEY;
   const mailgunDomain = process.env.MAILGUN_DOMAIN;
 
@@ -25,9 +24,9 @@
     });
   }
 
-  function createTransaction(nonce, callback) {
+  function createTransaction(transactionAmount, nonce, callback) {
     gateway.transaction.sale({
-      amount: transactionAmount,
+      amount: parseFloat(transactionAmount),
       paymentMethodNonce: nonce
     },
     function(err, result) {
