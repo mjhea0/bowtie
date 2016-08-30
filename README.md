@@ -22,11 +22,12 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 ## TODO
 
-1. Update UI/UX
 1. Add screenshots to Github
 1. Add different mail providers for Nodemailer
 1. Update documentation
+1. Update client side validation
 1. Create CLI
 1. ~~Set up Travis CI~~ (08/27/2016)
 1. ~~Add Code Coverage and Coveralls~~ (08/27/2016)
 1. ~~Add more integration tests~~ (08/29/2016)
+1. ~~Update UI/UX~~ (08/29/2016)

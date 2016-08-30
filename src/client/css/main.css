@@ -11,13 +11,14 @@ a {
 
 /* payment form */
 
-.email {
-  width: 326px;
+label {
+  max-width: 215px;
+  text-align: left;
 }
 
 /* loading spinner */
 
-.spinner {
+.spinner  {
   margin: 100px auto;
   width: 50px;
   height: 40px;
