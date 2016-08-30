@@ -29,6 +29,7 @@ describe('components : payment : payment.controllers', () => {
   describe('getClientToken()', () => {
     it('should provide a token', (done) => {
       braintree.getClientToken((err, token) => {
+        should.not.exist(err);
         should.exist(token);
         token.should.be.a('string');
         done();
@@ -42,6 +43,7 @@ describe('components : payment : payment.controllers', () => {
       const transactionAmount = '20.00';
       braintree.createTransaction(
         transactionAmount, nonce, (err, info) => {
+        should.not.exist(err);
         should.not.exist(info.errors);
         should.exist(info.transaction);
         info.should.be.a('object');
@@ -58,6 +60,7 @@ describe('components : payment : payment.controllers', () => {
       const transactionAmount = '20.00';
       braintree.createTransaction(
         transactionAmount, nonce, (err, info) => {
+        should.not.exist(err);
         info.should.be.a('object');
         should.exist(info.errors);
         should.not.exist(info.transaction);
@@ -75,6 +78,7 @@ describe('components : payment : payment.controllers', () => {
       const transactionAmount = null;
       braintree.createTransaction(
         transactionAmount, nonce, (err, info) => {
+        should.not.exist(err);
         info.should.be.a('object');
         should.exist(info.errors);
         should.not.exist(info.transaction);
@@ -93,6 +97,7 @@ describe('components : payment : payment.controllers', () => {
       const userEmail = 'test@test.com';
       braintree.createUser(
         transactionID, userEmail, (err, userInfo) => {
+        should.not.exist(err);
         userInfo.should.be.a('array');
         userInfo[0].email.should.eql('test@test.com');
         done();
@@ -104,6 +109,7 @@ describe('components : payment : payment.controllers', () => {
       const userEmail = 'testing@testing.com';
       braintree.createUser(
         transactionID, userEmail, (err, userInfo) => {
+        should.not.exist(err);
         userInfo.should.be.a('array');
         userInfo[0].email.should.eql('testing@testing.com');
         braintree.createUser(
@@ -120,8 +126,24 @@ describe('components : payment : payment.controllers', () => {
     it('should return an empty array', (done) => {
       const userEmail = 'test@test.com';
       braintree.checkEmail(userEmail, (err, user) => {
+        should.not.exist(err);
         user.should.be.a('array');
         user.length.should.eql(0);
+        done();
+      });
+    });
+  });
+
+  describe('sendEmail()', () => {
+    it('should send an email', (done) => {
+      const userEmail = 'test@test.com';
+      braintree.sendEmail(userEmail, (err, info) => {
+        should.not.exist(err);
+        const msg = info.response.toString();
+        msg.should.contain('From: bow@tie.com');
+        msg.should.contain('To: test@test.com');
+        msg.should.contain('Subject: Bowtie!');
+        msg.should.contain('Hello!');
         done();
       });
     });

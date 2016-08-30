@@ -3,7 +3,8 @@
   'use strict';
 
   const nodemailer = require('nodemailer');
-  const mg = require('nodemailer-mailgun-transport');
+  const mailgunTransport = require('nodemailer-mailgun-transport');
+  const stubTransport = require('nodemailer-stub-transport');
 
   const mailgunKey = process.env.MAILGUN_KEY;
   const mailgunDomain = process.env.MAILGUN_DOMAIN;
@@ -75,17 +76,23 @@
       }
     };
 
-    const nodemailerMailgun = nodemailer.createTransport(mg(auth));
+    let transport;
+
+    if (process.env.NODE_ENV !== 'test') {
+      transport = nodemailer.createTransport(mailgunTransport(auth));
+    } else {
+      transport = nodemailer.createTransport(stubTransport());
+    }
 
     const message = {
       from: 'bow@tie.com',
       to: userEmail,
-      subject: 'Bowtie!', //
+      subject: 'Bowtie!',
       text: 'Hello!',
       html: 'Hello!'
     };
 
-    nodemailerMailgun.sendMail(message, function (error, info) {
+    transport.sendMail(message, function (error, info) {
       if (error) {
         callback(error);
       }
