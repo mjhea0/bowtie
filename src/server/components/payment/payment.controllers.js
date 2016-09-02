@@ -3,11 +3,13 @@
   'use strict';
 
   const nodemailer = require('nodemailer');
-  const mailgunTransport = require('nodemailer-mailgun-transport');
+  const ses = require('nodemailer-ses-transport');
   const stubTransport = require('nodemailer-stub-transport');
 
-  const mailgunKey = process.env.MAILGUN_KEY;
-  const mailgunDomain = process.env.MAILGUN_DOMAIN;
+  const amazonAccessKeyID = process.env.AMAZON_KEY_ID;
+  const amazonSecretAccessKey = process.env.AMAZON_KEY_SECRET;
+  const amazonRateLimit = process.env.AMAZON_RATE_LIMIT;
+  const amazonRegion = process.env.AMAZON_REGION;
 
   const gateway = require('../../config/payment.config');
   const knex = require('../../db/knex');
@@ -70,29 +72,29 @@
   function sendEmail(userEmail, callback) {
 
     const auth = {
-      auth: {
-        api_key: mailgunKey,
-        domain: mailgunDomain
-      }
+      accessKeyId: amazonAccessKeyID,
+      secretAccessKey: amazonSecretAccessKey,
+      rateLimit: amazonRateLimit,
+      region: amazonRegion
     };
 
-    let transport;
+    let transporter;
 
     if (process.env.NODE_ENV !== 'test') {
-      transport = nodemailer.createTransport(mailgunTransport(auth));
+      transporter = nodemailer.createTransport(ses(auth));
     } else {
-      transport = nodemailer.createTransport(stubTransport());
+      transporter = nodemailer.createTransport(stubTransport());
     }
 
     const message = {
-      from: 'bow@tie.com',
+      from: 'hermanmu@gmail.com',
       to: userEmail,
       subject: 'Bowtie!',
       text: 'Hello!',
       html: 'Hello!'
     };
 
-    transport.sendMail(message, function (error, info) {
+    transporter.sendMail(message, function (error, info) {
       if (error) {
         callback(error);
       }

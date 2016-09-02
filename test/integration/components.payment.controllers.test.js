@@ -140,7 +140,7 @@ describe('components : payment : payment.controllers', () => {
       braintree.sendEmail(userEmail, (err, info) => {
         should.not.exist(err);
         const msg = info.response.toString();
-        msg.should.contain('From: bow@tie.com');
+        msg.should.contain('From: hermanmu@gmail.com');
         msg.should.contain('To: test@test.com');
         msg.should.contain('Subject: Bowtie!');
         msg.should.contain('Hello!');
