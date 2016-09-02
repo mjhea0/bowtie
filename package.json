@@ -33,6 +33,7 @@
     "gulp-nodemon": "^2.1.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-shell": "^0.5.2",
     "jshint": "^2.9.3",
     "jshint-stylish": "^2.2.1",
     "mocha": "^3.0.2",
@@ -41,5 +42,5 @@
     "nodemailer-stub-transport": "^1.1.0",
     "run-sequence": "^1.2.2",
     "tiny-lr": "^0.2.1"
-  }    
+  }
 }

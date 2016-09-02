@@ -9,6 +9,8 @@ const nodemon = require('gulp-nodemon');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const server = require('tiny-lr')();
+const shell = require('gulp-shell');
+
 
 // *** config *** //
 
@@ -103,3 +105,17 @@ gulp.task('watch', () => {
   gulp.watch(paths.scripts, ['jshint', 'jscs']);
   gulp.watch(paths.styles, ['styles']);
 });
+
+gulp.task('database', shell.task([
+  'echo drop database...',
+  'dropdb bowtie --if-exists',
+  'echo ...database dropped',
+  'echo',
+  'echo create database...',
+  'createdb bowtie',
+  'echo ...database created',
+  'echo',
+  'echo seed database...',
+  'knex migrate:latest --env development',
+  'echo ...database seeded'
+]));
