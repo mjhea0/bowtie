@@ -15,7 +15,7 @@
   const knex = require('../../db/knex');
 
   function getClientToken(callback) {
-    gateway.clientToken.generate({}, function(err, response) {
+    gateway.clientToken.generate({}, (err, response) => {
       if (err) {
         callback(err);
       }
@@ -32,7 +32,7 @@
       amount: parseFloat(transactionAmount),
       paymentMethodNonce: nonce
     },
-    function(err, result) {
+    (err, result) => {
       if (err) {
         callback(err);
       }
@@ -49,10 +49,10 @@
       transaction_id: transactionID
     })
     .returning('*')
-    .then(function(res) {
+    .then((res) => {
       callback(null, res);
     })
-    .catch(function(err) {
+    .catch((err) => {
       callback(err);
     });
   }
@@ -61,10 +61,10 @@
     return knex('users')
     .select('*')
     .where('email', userEmail)
-    .then(function(res) {
+    .then((res) => {
       callback(null, res);
     })
-    .catch(function(err) {
+    .catch((err) => {
       callback(err);
     });
   }
@@ -94,7 +94,7 @@
       html: 'Hello!'
     };
 
-    transporter.sendMail(message, function (error, info) {
+    transporter.sendMail(message, (error, info) => {
       if (error) {
         callback(error);
       }

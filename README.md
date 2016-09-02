@@ -22,12 +22,12 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 ## TODO
 
-1. Add gulp file
 1. Update documentation
 1. Update client side validation
-1. Create CLI
+1. Set up passport for admin
 1. ~~Set up Travis CI~~ (08/27/2016)
 1. ~~Add Code Coverage and Coveralls~~ (08/27/2016)
 1. ~~Add more integration tests~~ (08/29/2016)
 1. ~~Update UI/UX~~ (08/29/2016)
 1. ~~Added Amazon SES~~ (09/02/2016)
+1. ~~Add gulp file~~ (09/02/2016)
