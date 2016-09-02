@@ -11,7 +11,6 @@ const notify = require('gulp-notify');
 const server = require('tiny-lr')();
 const shell = require('gulp-shell');
 
-
 // *** config *** //
 
 const paths = {
