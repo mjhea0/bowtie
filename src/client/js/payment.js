@@ -144,9 +144,9 @@ function createHostedFields(clientInstance, callback) {
       return;
     }
     hostedFieldsInstance.on('cardTypeChange', (event) => {
-      if (event.cards) {
-        // card used (display image, if you'd like...)
-      }
+      // if (event.cards) {
+      //   // card used (display image, if you'd like...)
+      // }
     });
     callback(null, hostedFieldsInstance);
   });
