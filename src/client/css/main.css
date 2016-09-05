@@ -16,6 +16,18 @@ label {
   text-align: left;
 }
 
+.payment-alert {
+  max-width: 215px;
+}
+
+.invalid-input {
+  color: red;
+}
+
+.valid-input {
+  color: green;
+}
+
 /* loading spinner */
 
 .spinner  {

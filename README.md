@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/mjhea0/bowtie.svg?branch=master)](https://travis-ci.org/mjhea0/bowtie)
 [![Coverage Status](https://coveralls.io/repos/github/mjhea0/bowtie/badge.svg?branch=master)](https://coveralls.io/github/mjhea0/bowtie?branch=master)
 
-Have a digital product that you want to sell? Bowtie simplifies the process, providing both the client and servercode. It's powered by -
+Have a digital product that you want to sell? Bowtie simplifies the process, providing both the client and server code. It's powered by -
 
 1. HTML
 1. CSS
@@ -23,7 +23,7 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 1. Copy *.env-sample* to *.env* and then update.
 1. Create local database - i.e., `createdb bowtie`
 1. Migrate - `knex migrate:latest --env development`
-1. Run the development server - `npm start`
+1. Run the development server - `gulp`
 
 ## Test
 
@@ -35,6 +35,9 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 1. Update client side validation
 1. Set up passport for admin
+1. Handle errors better
+1. Update UI/UX
+1. Add screenshots to README
 1. ~~Set up Travis CI~~ (08/27/2016)
 1. ~~Add Code Coverage and Coveralls~~ (08/27/2016)
 1. ~~Add more integration tests~~ (08/29/2016)

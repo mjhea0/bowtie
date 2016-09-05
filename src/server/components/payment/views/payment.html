@@ -18,14 +18,14 @@
         </div>
 
         <!-- payment form -->
-        <form id="form">
+        <form id="form" name="payment">
           <div class="form-group">
             <label>
               <span>Email Address</span>
-              <input type="email" class="form-control email" name="email" value="test@test.com" required>
+              <input type="text" class="form-control form-email" name="email" placeholder="test@test.com" id="email-address">
             </label>
           </div>
-          <div class="form-group">
+          <div class="form-group card-number-container">
             <label>
               <span>Card Number</span>
               <div type="text" class="form-control" id="card-number"></div>
@@ -45,6 +45,11 @@
           </div>
           <button type="submit" class="btn btn-default submit-btn" id="submit-btn" disabled>Submit</button>
         </form>
+
+        <br>
+        <div class="center-block payment-alert" id="payment-alert">
+          <div class="alert alert-danger" id="payment-alert-text"></div>
+        </div>
 
       </div>
     </div>

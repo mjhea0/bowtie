@@ -27,10 +27,12 @@
   }
 
   function checkoutHandler(req, res, next) {
+    console.log(req.body);
     const nonce = req.body.payment_method_nonce;
     const userEmail = req.body.email;
     // ensure email is unique
     braintree.checkEmail(userEmail, (err, data) => {
+      console.log(data);
       if (data.length) {
         return res.status(500).json({
           status: 'That email has already been used.',
