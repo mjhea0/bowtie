@@ -23,6 +23,7 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 1. Copy *.env-sample* to *.env* and then update.
 1. Create local database - i.e., `createdb bowtie`
 1. Migrate - `knex migrate:latest --env development`
+1. Seed - `knex seed:run --env development`
 1. Run the development server - `gulp`
 
 ## Test
@@ -33,9 +34,11 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 ## TODO
 
-1. Update client side validation
-1. Set up passport for admin
+1. Write tests
+1. Update handleErrors(), adding unique email
 1. Handle errors better
+1. Add admin set up
+1. Add admin transactions
 1. Update UI/UX
 1. Add screenshots to README
 1. ~~Set up Travis CI~~ (08/27/2016)
@@ -44,3 +47,5 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 1. ~~Update UI/UX~~ (08/29/2016)
 1. ~~Added Amazon SES~~ (09/02/2016)
 1. ~~Add gulp file~~ (09/02/2016)
+1. ~~Update client side validation~~ (09/05/2016)
+1. ~~Set up passport for admin~~ (09/06/2016)

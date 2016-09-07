@@ -7,7 +7,7 @@ const knex = require('../../src/server/db/knex');
 const braintree = require(
   '../../src/server/components/payment/payment.controllers');
 
-describe('components : payment : payment.controllers', () => {
+describe('components : payment : controllers', () => {
 
   beforeEach((done) => {
     knex.migrate.rollback()

@@ -10,12 +10,15 @@
   const flash = require('connect-flash');
   const morgan = require('morgan');
   const nunjucks = require('nunjucks');
+  const passport = require('passport');
 
   // *** view folders *** //
   const viewFolders = [
     path.join(__dirname, '..', 'views'),
     path.join(__dirname, '..', 'components', 'common', 'views'),
-    path.join(__dirname, '..', 'components', 'payment', 'views')
+    path.join(__dirname, '..', 'components', 'payment', 'views'),
+    path.join(__dirname, '..', 'components', 'auth', 'views'),
+    path.join(__dirname, '..', 'components', 'admin', 'views')
   ];
 
   // *** load environment variables *** //
@@ -42,8 +45,15 @@
       resave: false,
       saveUninitialized: true
     }));
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(flash());
     app.use(express.static(path.join(__dirname, '..', '..', 'client')));
+
+    app.use((req, res, next) => {
+      res.locals.flashMessages = req.flash('messages');
+      next();
+    });
 
   };
 

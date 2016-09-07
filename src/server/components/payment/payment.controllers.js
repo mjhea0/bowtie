@@ -43,7 +43,7 @@
   }
 
   function createUser(transactionID, userEmail, callback) {
-    return knex('users')
+    return knex('transactions')
     .insert({
       email: userEmail,
       transaction_id: transactionID
@@ -58,7 +58,7 @@
   }
 
   function checkEmail(userEmail, callback) {
-    return knex('users')
+    return knex('transactions')
     .select('*')
     .where('email', userEmail)
     .then((res) => {

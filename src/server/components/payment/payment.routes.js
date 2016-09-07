@@ -27,50 +27,39 @@
   }
 
   function checkoutHandler(req, res, next) {
-    console.log(req.body);
     const nonce = req.body.payment_method_nonce;
     const userEmail = req.body.email;
-    // ensure email is unique
-    braintree.checkEmail(userEmail, (err, data) => {
-      console.log(data);
-      if (data.length) {
-        return res.status(500).json({
-          status: 'That email has already been used.',
-          data: null
-        });
+    // create braintree transaction
+    braintree.createTransaction(
+      parseFloat(transactionAmount), nonce, (err, data) => {
+      if (err) {
+        return next(err);
       }
-      // create braintree transaction
-      braintree.createTransaction(
-        parseFloat(transactionAmount), nonce, (err, data) => {
-        if (err) {
-          return next(err);
-        }
-        if (data.success || data.transaction) {
-          const transactionID = data.transaction.id;
-          // add user to the db
-          braintree.createUser(
-            transactionID, userEmail, (err, user) => {
+      if (data.success || data.transaction) {
+        const transactionID = data.transaction.id;
+        // add user to the db
+        braintree.createUser(
+          transactionID, userEmail, (err, user) => {
+          if (err) {
+            return next(err);
+          }
+          // send email
+          braintree.sendEmail(userEmail, (err, info) => {
             if (err) {
               return next(err);
             }
-            // send email
-            braintree.sendEmail(userEmail, (err, info) => {
-              if (err) {
-                return next(err);
-              }
-              paid = true;
-              return res.status(200).json({
-                status: 'success',
-                data: user
-              });
+            paid = true;
+            return res.status(200).json({
+              status: 'success',
+              data: user
             });
           });
-        } else {
-          return res.status(500).json({
-            status: 'error'
-          });
-        }
-      });
+        });
+      } else {
+        return res.status(500).json({
+          status: 'error'
+        });
+      }
     });
   }
 
