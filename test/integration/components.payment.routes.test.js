@@ -44,7 +44,7 @@ describe('components : payment : routes', () => {
   });
 
   describe('POST /checkout', () => {
-    it('should redirect to the thanks view', (done) => {
+    it('should return a valid response', (done) => {
       chai.request(app)
       .post('/checkout')
       .send({
