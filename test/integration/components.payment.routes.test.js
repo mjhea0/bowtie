@@ -52,6 +52,7 @@ describe('components : payment : routes', () => {
         payment_method_nonce: 'fake-valid-nonce'
       })
       .end((err, res) => {
+        console.log(err);
         should.not.exist(err);
         res.redirects.length.should.eql(0);
         res.status.should.eql(200);
