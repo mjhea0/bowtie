@@ -34,13 +34,15 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 ## TODO
 
-1. Write tests
+1. Refactor tests
 1. Update handleErrors(), adding unique email
+1. Write tests
 1. Handle errors better
 1. Add admin set up
 1. Add admin transactions
 1. Update UI/UX
 1. Add screenshots to README
+1. Refactor `paid`
 1. ~~Set up Travis CI~~ (08/27/2016)
 1. ~~Add Code Coverage and Coveralls~~ (08/27/2016)
 1. ~~Add more integration tests~~ (08/29/2016)
@@ -49,3 +51,4 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 1. ~~Add gulp file~~ (09/02/2016)
 1. ~~Update client side validation~~ (09/05/2016)
 1. ~~Set up passport for admin~~ (09/06/2016)
+1. ~~Write tests~~ (09/06/2016)
