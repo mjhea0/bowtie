@@ -34,10 +34,8 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 
 ## TODO
 
-1. Refactor tests
-1. Update handleErrors(), adding unique email
-1. Write tests
 1. Handle errors better
+1. Add unit tests
 1. Add admin set up
 1. Add admin transactions
 1. Update UI/UX
@@ -52,3 +50,5 @@ Have a digital product that you want to sell? Bowtie simplifies the process, pro
 1. ~~Update client side validation~~ (09/05/2016)
 1. ~~Set up passport for admin~~ (09/06/2016)
 1. ~~Write tests~~ (09/06/2016)
+1. ~~Refactor tests~~ (09/07/2016)
+1. ~~Write tests~~ (09/09/2016)
